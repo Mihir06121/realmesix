@@ -1,8 +1,13 @@
 <!-- This is an automatically generated page -->
 
+<!-- This is an automatically generated page -->
+
 {%extends "base.html"%}
 {%block title%}Home{%endblock%}
 {%block body%}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
 <center>
   <img src="https://realmesix.glitch.me/static/logo.png" alt="realmesix FW" height="255"
@@ -16,95 +21,103 @@
   <h2>
     All your favourite custom firmware in one place.
   </h2>
- 
+  <h3>
+      Developed by
+      <a href="https://justaprudev.github.io">
+        <span class="red">Priyam Kalra</span>
+      </a>
+      <br /><small>
+        Maintained by
+        <a href="http://thecloverly.github.io/">
+          <span class="purple">SriBalaji</span>
+        </a>
+      </small>
+    </h3>
 </center>
 <hr style="background: #181a1b">
-<div class="background-card">
+
+<div class="">
   <div class="container">
-    <div>
-      <div style="margin-left: 16%;">
-        <span class="red" style="font-size: 135%;">[{{len(roms)}}]</span>
-        <h1>ROMs</h1>
+    <div class="row justify-content-around">
+      <div class=" col-md-3">
+        <div>
+          <span class="red">[{{len(roms)}}]</span>
+          <h1>ROMs</h1>
+        </div>
+        <p></p>
+        {% set latest_release = roms[0] %}
+        {{ roms.sort() or '' }}
+        <ul class="lead">
+          {% for rom in roms %}
+          <li style="color: {{get_random_color()}}">
+            <a href="https://realmesix.glitch.me/{{rom}}">
+          {% if rom == latest_release %}
+              <span class="red">{{rom}}</span>
+          {% else %}
+              <span style="color: white;">{{rom}}</span>
+          {% endif %}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
       </div>
-      <p></p>
-      {% set latest_release = roms[0] %}
-      {{ roms.sort() or '' }}
-      <ul class="lead">
-        {% for rom in roms %}
-        <li style="color: {{get_random_color()}}">
-          <a href="https://realmesix.glitch.me/{{rom}}">
-        {% if rom == latest_release %}
-            <span class="red">{{rom}}</span>
-        {% else %}
-            <span style="color: white;">{{rom}}</span>
-        {% endif %}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
+      <div class=" col-md-3">
+        <div>
+          <div>
+            <span class="red">[{{len(kernels)}}]</span>
+            <h1>Kernels</h1>
+          </div>
+          <p></p>
+          {% set latest_release = kernels[0] %}
+          {{ kernels.sort() or ''}}
+          <ul class="lead">
+            {% for kernel in kernels %}
+            <li style="color: {{get_random_color()}}">
+              <a href="https://realmesix.glitch.me/{{kernel}}">
+            {% if kernel == latest_release %}
+                <span class="red">{{kernel}}</span>
+            {% else %}
+                <span style="color: white;">{{kernel}}</span>
+            {% endif %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div>
+          <div>
+            <span class="red">[{{len(recoveries)}}]</span>
+            <h1>Recoveries</h1>
+          </div>
+          <p></p>
+          {% set latest_release = recoveries[0] %}
+          {{ recoveries.sort() or ''}}
+          <ul class="lead">
+            {% for recovery in recoveries %}
+            <li style="color: {{get_random_color()}}">
+              <a href="https://realmesix.glitch.me/{{recovery}}">
+            {% if recovery == latest_release %}
+                <span class="red">{{recovery}}</span>
+            {% else %}
+                <span style="color: white;">{{recovery}}</span>
+            {% endif %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      </div>
     </div>
-  <div style="margin-left: -2%;"></div>
     <div>
-      <div style="margin-left: 18%;">
-        <span class="red" style="font-size: 135%;">[{{len(kernels)}}]</span>
-        <h1>Kernels</h1>
-      </div>
-      <p></p>
-      {% set latest_release = kernels[0] %}
-      {{ kernels.sort() or ''}}
-      <ul class="lead">
-        {% for kernel in kernels %}
-        <li style="color: {{get_random_color()}}">
-          <a href="https://realmesix.glitch.me/{{kernel}}">
-        {% if kernel == latest_release %}
-            <span class="red">{{kernel}}</span>
-        {% else %}
-            <span style="color: white;">{{kernel}}</span>
-        {% endif %}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div> 
-    <div style="margin-left: 2%;"></div>
-    <div>
-      <div style="margin-left: 18%;">
-        <span class="red" style="font-size: 135%;">[{{len(recoveries)}}]</span>
-        <h1>Recoveries</h1>
-      </div>
-      <p></p>
-      {% set latest_release = recoveries[0] %}
-      {{ recoveries.sort() or ''}}
-      <ul class="lead">
-        {% for recovery in recoveries %}
-        <li style="color: {{get_random_color()}}">
-          <a href="https://realmesix.glitch.me/{{recovery}}">
-        {% if recovery == latest_release %}
-            <span class="red">{{recovery}}</span>
-        {% else %}
-            <span style="color: white;">{{recovery}}</span>
-        {% endif %}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
+    <!-- <div style="margin-left: -2%;"></div> -->
+    <!-- <div style="margin-left: 2%;"></div> -->
   </div>
 </div>
 <br>
 <center>
   <h4>Last updated: {{date}}</h4>
-<h3>
-    <br /><small>
-      Developed by
-      <a href="https://justaprudev.github.io">
-        <span class="red">Priyam Kalra</span>
-      </a>
-        Maintained by
-        <a href="http://https://sribalaji.glitch.me//">
-          <span class="purple">SriBalaji</span>
-        </a>
-      </small>
-    </h3>
-  </center>
+</center>
 {%endblock%}
